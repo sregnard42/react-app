@@ -1,4 +1,7 @@
 .Form {
     color: lightblue;
     background-color: gray;
+    text-align:center;
+    margin:auto;
+    width:400px;
 }

@@ -1,12 +1,19 @@
 import React from 'react';
 import styles from './Form.module.css';
+import Question from '../Question/Question';
+import Input from '../Input/Input';
 
 class Form extends React.Component
 {
     constructor(props)
     {
         super(props);
-        this.stateDefault = {value : ''};
+        this.stateDefault = {
+            text    : '',
+            radio   : '',
+            tick    : '',
+            scroll  : ''
+        };
         this.state = this.stateDefault;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,12 +22,12 @@ class Form extends React.Component
 
     handleChange(event)
     {
-        this.setState({value: event.target.value});
+        this.setState({text: event.target.value});
     }
 
     handleSubmit(event)
     {
-        alert(this.state.value);
+        alert(this.state.text);
         event.preventDefault();
     }
 
@@ -34,13 +41,20 @@ class Form extends React.Component
         return(
             <div className={styles.Form}>
             <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
-                <label>
-                    Type text :<br />
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                <br />
+                <Question
+                q={'What\'s your name ?'}
+                a={
+                    <Input
+                        type={'text'}
+                        title={'Name'}
+                        name={'name'}
+                        value={this.state.text.value}
+                        placeholder={'Enter your name'}
+                        handleChange={this.handleChange}
+                    />
+                }
+                />
                 <input type="submit" value="Submit" />
-                <br />
                 <input type="reset" value="Reset" />
             </form>
             </div>
