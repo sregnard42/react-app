@@ -1,5 +1,5 @@
 import React from 'react';
-import './Form.css';
+import styles from './Form.module.css';
 
 class Form extends React.Component
 {
@@ -32,14 +32,18 @@ class Form extends React.Component
     render()
     {
         return(
+            <div className={styles.Form}>
             <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
                 <label>
                     Type text :<br />
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
+                <br />
                 <input type="submit" value="Submit" />
+                <br />
                 <input type="reset" value="Reset" />
             </form>
+            </div>
         );
     }
 }
