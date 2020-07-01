@@ -26,8 +26,11 @@ class Form extends React.Component {
     }
 
     handleSubmit(event) {
-        alert(this.state.text);
         event.preventDefault();
+        if (this.state.text === '')
+            alert("Name not entered.");
+        else
+            alert("OK.");
     }
 
     handleReset() {
