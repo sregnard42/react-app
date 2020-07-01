@@ -5,7 +5,7 @@ class Input extends React.Component {
     render() {
         return (
             <input
-                className={styles.InputText}
+                className={styles.Input}
                 id={this.props.name}
                 name={this.props.name}
                 type={this.props.type}

@@ -1,7 +1,10 @@
 .Form {
-    color: lightblue;
+    font-weight:580;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:darkgray;
     background-color: gray;
     text-align:center;
     margin:auto;
     width:400px;
+    border-radius: 42px;
 }

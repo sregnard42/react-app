@@ -1,0 +1,11 @@
+.Question {
+    width: 300px;
+    margin: auto;
+    margin-top : 5px;
+    margin-bottom : 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color:#eeee;
+    background-color: darkgray;
+    border-radius : 21px;
+}
