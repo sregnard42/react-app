@@ -9,13 +9,17 @@ import Scroll from '../Scroll/Scroll';
 class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.text = '';
-        this.radio = '';
-        this.tick = '';
-        this.scroll = '';
+        this.init();
         this.state = {};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset = this.handleReset.bind(this);
+    }
+
+    init() {
+        this.text = '';
+        this.radio = '';
+        this.tick = [];
+        this.scroll = '';
     }
 
     handleChangeText = (text) => {
@@ -24,6 +28,16 @@ class Form extends React.Component {
 
     handleChangeRadio = (radio) => {
         this.radio = radio;
+    }
+
+    handleChangeTick = (tick) => {
+        for (let i = 0; i < this.tick.length; i++)
+            if (this.tick[i] === tick)
+            {
+                this.tick.splice(i, 1);
+                return ;
+            }
+        this.tick.push(tick);
     }
 
     checkText()
@@ -43,16 +57,26 @@ class Form extends React.Component {
             return '(KO) Answer 2 : ' + this.radio + '\n';
     }
 
+    checkTick()
+    {
+        if (this.tick.length === 0)
+            return 'Question 3 not answered\n';
+        for (let i = 0; i < this.tick.length; i++)
+            if (this.tick[i] % 2 === 0)
+                return '(KO) Answer 3 : ' + this.tick[i] + ' is not an odd number\n';
+        return '(OK) Answer 3 : ' + this.tick + '\n';
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         let output = this.checkText();
         output += this.checkRadio();
+        output += this.checkTick();
         alert(output);
     }
 
     handleReset() {
-        this.text = '';
-        this.radio = '';
+        this.init();
         this.forceUpdate();
     }
 
@@ -87,14 +111,15 @@ class Form extends React.Component {
                         }
                     />
                     <Question
-                        q={'Select one or more :'}
+                        q={'Select odd number(s) :'}
                         a={
                             <Tick
                                 choices={[
-                                    'Tick 1',
-                                    'Tick 2',
-                                    'Tick 3'
+                                    '13',
+                                    '26',
+                                    '91'
                                 ]}
+                                handleChange={this.handleChangeTick}
                             />
                         }
                     />
