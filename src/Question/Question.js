@@ -6,7 +6,7 @@ class Question extends React.Component {
         return (
             <div className={styles.Question}>
                 {this.props.q}<br />
-                {this.props.a}<br />
+                {this.props.a}
             </div>
         );
     }

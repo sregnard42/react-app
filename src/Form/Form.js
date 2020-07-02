@@ -4,7 +4,7 @@ import Question from '../Question/Question';
 import Input from '../Input/Input';
 import Radio from '../Radio/Radio';
 import Tick from '../Tick/Tick';
-import Scroll from '../DropDown/DropDown';
+import DropDown from '../DropDown/DropDown';
 
 class Form extends React.Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Form extends React.Component {
         this.text = '';
         this.radio = '';
         this.tick = [];
-        this.scroll = '';
+        this.dropdown = '';
     }
 
     handleChangeText = (text) => {
@@ -32,23 +32,24 @@ class Form extends React.Component {
 
     handleChangeTick = (tick) => {
         for (let i = 0; i < this.tick.length; i++)
-            if (this.tick[i] === tick)
-            {
+            if (this.tick[i] === tick) {
                 this.tick.splice(i, 1);
-                return ;
+                return;
             }
         this.tick.push(tick);
     }
 
-    checkText()
-    {
+    handleChangeDropDown = (dropdown) => {
+        this.dropdown = dropdown;
+    }
+
+    checkText() {
         if (this.text === '')
             return 'Question 1 not answered\n';
         return '(OK) Answer 1 : ' + this.text + '\n';
     }
 
-    checkRadio()
-    {
+    checkRadio() {
         if (this.radio === '')
             return 'Question 2 not answered\n';
         if (this.radio === '42')
@@ -57,8 +58,7 @@ class Form extends React.Component {
             return '(KO) Answer 2 : ' + this.radio + '\n';
     }
 
-    checkTick()
-    {
+    checkTick() {
         if (this.tick.length === 0)
             return 'Question 3 not answered\n';
         for (let i = 0; i < this.tick.length; i++)
@@ -67,11 +67,21 @@ class Form extends React.Component {
         return '(OK) Answer 3 : ' + this.tick + '\n';
     }
 
+    checkDropDown() {
+        if (this.dropdown === '')
+            return 'Question 4 not answered\n';
+        if (this.dropdown === '16')
+            return '(OK) Answer 4 : ' + this.dropdown + '\n';
+        else
+            return '(KO) Answer 4 : ' + this.dropdown + '\n';
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         let output = this.checkText();
         output += this.checkRadio();
         output += this.checkTick();
+        output += this.checkDropDown();
         alert(output);
     }
 
@@ -126,12 +136,13 @@ class Form extends React.Component {
                     <Question
                         q={'What\'s the result of 4^2 ?'}
                         a={
-                            <Scroll
+                            <DropDown
                                 choices={[
                                     '42',
                                     '8',
                                     '16'
                                 ]}
+                                handleChange={this.handleChangeDropDown}
                             />
                         }
                     />

@@ -1,21 +1,31 @@
 .DropDown {
     border-radius:7px;
-    width:50px;
+    width:fit-content;
     margin:auto;
-}
-
-.DropDownItem {
-    margin:2px;
-    padding:2px;
-    height:22px;
     border-style: solid;
     border-width: 1px;
     border-radius:7px;
     border-color:#eeee;
+}
+
+.DropDownItem {
+    margin:2px;
+    padding:4px;
+    height:22px;
+    width:80px;
     background-color:gray;
+}
+
+.DropDownItem:hover {
+    background-color:#eeee;
+    color:gray;
 }
 
 .DropDownItemSelected {
     background-color:#eeee;
     color:gray;
+}
+
+.DropDownCollapse {
+    display: none;
 }
