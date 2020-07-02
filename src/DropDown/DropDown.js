@@ -10,10 +10,8 @@ class DropDownItem extends React.Component {
 
     onClick = () => {
         if (this.props.collapsed === false)
-        {
             this.setState({selected: true});
-        }
-        this.props.onChange(this.props.name);
+        this.props.onChange(this, this.props.name);
     }
 
     render() {
@@ -38,33 +36,26 @@ class DropDown extends React.Component {
     constructor(props) {
         super(props);
         this.key = 1;
-        this.selected = '';
         this.state = {collapsed: true};
+        this.selected = '';
     }
 
-    onChange = (name) => {
-        if (this.state.collapsed || name === '')
+    onChange = (item, name) => {
+        if (this.state.collapsed)
         {
             this.setState({collapsed: !this.state.collapsed});
             return ;
         }
-        if (this.selected === '')
-            this.choices.splice(0, 1);
         this.selected = name;
         this.props.handleChange(name);
         this.setState({collapsed: true})
     }
 
     render() {
-        if (this.state.collapsed && this.selected === '')
-        {
-            this.choices = Array.from(this.props.choices);
-            this.choices.unshift('');
-        }
-        console.log(this.choices);
+        this.selected = this.props.selected();
         return (
             <div className={styles.DropDown}>
-                {this.choices.map((choice) => {
+                {this.props.choices.map((choice) => {
                     return (
                         <DropDownItem
                             key={this.key++}

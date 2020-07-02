@@ -43,6 +43,10 @@ class Form extends React.Component {
         this.dropdown = dropdown;
     }
 
+    getDropDown = () => {
+        return this.dropdown;
+    }
+
     checkText() {
         if (this.text === '')
             return 'Question 1 not answered\n';
@@ -138,11 +142,13 @@ class Form extends React.Component {
                         a={
                             <DropDown
                                 choices={[
+                                    '',
                                     '42',
                                     '8',
                                     '16'
                                 ]}
                                 handleChange={this.handleChangeDropDown}
+                                selected={this.getDropDown}
                             />
                         }
                     />
