@@ -13,12 +13,19 @@ class ScrollItem extends React.Component {
 
 class Scroll extends React.Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.key = 1;
+    }
+
     render() {
         return (
             <div className={styles.Scroll}>
                 {this.props.choices.map((choice) => {
                     return (
                         <ScrollItem
+                            key={this.key++}
                             name={choice}
                         />
                     )

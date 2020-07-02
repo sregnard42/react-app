@@ -1,3 +1,31 @@
 .Radio {
     background-color: darkkhaki;
 }
+
+.RadioItem {
+    border-width: 1px;
+    border-style: solid;
+    display:inline-block;
+}
+
+.RadioBtn {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 25px;
+    border-color:black;
+    margin:auto;
+    background-color: white;
+    height:10px;
+    width:10px;
+}
+
+.RadioBtnSelected {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 25px;
+    border-color:white;
+    margin:auto;
+    background-color:black;
+    height:10px;
+    width:10px;
+}

@@ -13,12 +13,19 @@ class TickItem extends React.Component {
 
 class Tick extends React.Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.key = 1;
+    }
+
     render() {
         return (
             <div className={styles.Tick}>
                 {this.props.choices.map((choice) => {
                     return (
                         <TickItem
+                            key={this.key++}
                             name={choice}
                         />
                     )
