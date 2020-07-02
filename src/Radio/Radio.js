@@ -55,11 +55,11 @@ class Radio extends React.Component {
     }
 
     onChange(btn, name) {
-        console.log(this.btn);
         if (this.btn !== 0)
             this.btn.setState({ selected: false });
         this.btn = btn;
         this.selected = name;
+        this.props.handleChange(name);
     }
 
     render() {

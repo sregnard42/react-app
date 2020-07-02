@@ -9,32 +9,51 @@ import Scroll from '../Scroll/Scroll';
 class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.stateDefault = {
-            text: '',
-            radio: '',
-            tick: '',
-            scroll: ''
-        };
-        this.state = this.stateDefault;
-        this.handleChange = this.handleChange.bind(this);
+        this.text = '';
+        this.radio = '';
+        this.tick = '';
+        this.scroll = '';
+        this.state = {};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ text: event.target.value });
+    handleChangeText = (text) => {
+        this.text = text;
+    }
+
+    handleChangeRadio = (radio) => {
+        this.radio = radio;
+    }
+
+    checkText()
+    {
+        if (this.text === '')
+            return 'Question 1 not answered\n';
+        return '(OK) Answer 1 : ' + this.text + '\n';
+    }
+
+    checkRadio()
+    {
+        if (this.radio === '')
+            return 'Question 2 not answered\n';
+        if (this.radio === '42')
+            return '(OK) Answer 2 : ' + this.radio + '\n';
+        else
+            return '(KO) Answer 2 : ' + this.radio + '\n';
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        if (this.state.text === '')
-            alert("Name not entered.");
-        else
-            alert("OK.");
+        let output = this.checkText();
+        output += this.checkRadio();
+        alert(output);
     }
 
     handleReset() {
-        this.setState(() => this.stateDefault);
+        this.text = '';
+        this.radio = '';
+        this.forceUpdate();
     }
 
     render() {
@@ -48,21 +67,22 @@ class Form extends React.Component {
                                 type={'text'}
                                 title={'Name'}
                                 name={'name'}
-                                value={this.state.text.value}
+                                value={this.text}
                                 placeholder={'Enter your name'}
-                                handleChange={this.handleChange}
+                                handleChange={this.handleChangeText}
                             />
                         }
                     />
                     <Question
-                        q={'Select one only :'}
+                        q={'Select the best number :'}
                         a={
                             <Radio
                                 choices={[
-                                    'radio1',
-                                    'radio2',
-                                    'radio3'
+                                    '21',
+                                    '42',
+                                    '84'
                                 ]}
+                                handleChange={this.handleChangeRadio}
                             />
                         }
                     />
@@ -70,11 +90,11 @@ class Form extends React.Component {
                         q={'Select one or more :'}
                         a={
                             <Tick
-                            choices={[
-                                'tick1',
-                                'tick2',
-                                'tick3'
-                            ]}
+                                choices={[
+                                    'Tick 1',
+                                    'Tick 2',
+                                    'Tick 3'
+                                ]}
                             />
                         }
                     />
@@ -82,11 +102,11 @@ class Form extends React.Component {
                         q={'Select one only :'}
                         a={
                             <Scroll
-                            choices={[
-                                'scroll1',
-                                'scroll2',
-                                'scroll3'
-                            ]}
+                                choices={[
+                                    'Scroll 1',
+                                    'Scroll 2',
+                                    'Scroll 3'
+                                ]}
                             />
                         }
                     />
