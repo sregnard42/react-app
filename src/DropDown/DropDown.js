@@ -15,15 +15,12 @@ class DropDownItem extends React.Component {
     }
 
     render() {
-        if (this.props.collapsed)
-        {
-            if (this.state.selected)
-                this.name = '--- ' + this.name + ' ---';
-            else if (!this.state.selected)
+        if (this.name === '')
+            this.name = '- Select -';
+        if (this.props.collapsed && !this.state.selected)
                 this.style = styles.DropDownCollapse;
-        }
-        else
-            this.style = styles.DropDownItem;
+        else if (!this.props.collapsed)
+            this.style = this.state.selected ? styles.DropDownItemSelected : styles.DropDownItem;
         return (
             <div className={this.style} onClick={this.onClick}>
                 {this.name}
