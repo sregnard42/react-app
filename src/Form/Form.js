@@ -68,6 +68,8 @@ class Form extends React.Component {
         for (let i = 0; i < this.tick.length; i++)
             if (this.tick[i] % 2 === 0)
                 return '(KO) Answer 3 : ' + this.tick[i] + ' is not an odd number\n';
+        if (this.tick.length < 2)
+                return '(KO) Answer 3 : Well yes, but actually no.\n' ;
         return '(OK) Answer 3 : ' + this.tick + '\n';
     }
 
@@ -125,7 +127,7 @@ class Form extends React.Component {
                         }
                     />
                     <Question
-                        q={'Select odd number(s) :'}
+                        q={'Select all odd number(s) :'}
                         a={
                             <Tick
                                 choices={[
