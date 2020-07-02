@@ -1,0 +1,21 @@
+.DropDown {
+    border-radius:7px;
+    width:50px;
+    margin:auto;
+}
+
+.DropDownItem {
+    margin:2px;
+    padding:2px;
+    height:22px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius:7px;
+    border-color:#eeee;
+    background-color:gray;
+}
+
+.DropDownItemSelected {
+    background-color:#eeee;
+    color:gray;
+}

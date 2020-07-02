@@ -4,7 +4,7 @@ import Question from '../Question/Question';
 import Input from '../Input/Input';
 import Radio from '../Radio/Radio';
 import Tick from '../Tick/Tick';
-import Scroll from '../Scroll/Scroll';
+import Scroll from '../DropDown/DropDown';
 
 class Form extends React.Component {
     constructor(props) {
@@ -124,13 +124,13 @@ class Form extends React.Component {
                         }
                     />
                     <Question
-                        q={'Select one only :'}
+                        q={'What\'s the result of 4^2 ?'}
                         a={
                             <Scroll
                                 choices={[
-                                    'Scroll 1',
-                                    'Scroll 2',
-                                    'Scroll 3'
+                                    '42',
+                                    '8',
+                                    '16'
                                 ]}
                             />
                         }
